@@ -1,0 +1,1113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>nk</author>
+      <authoring_tool>Adobe Photoshop.</authoring_tool>
+    </contributor>
+    <created>2010-11-09T17:29:59Z</created>
+    <modified>2010-11-09T17:29:59Z</modified>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_lights>
+    <light id="Infinite_Light_2" name="Infinite_Light_1">
+      <technique_common>
+        <directional>
+          <color>1 1 1</color>
+        </directional>
+      </technique_common>
+      <extra>
+        <technique profile="MAX3D">
+          <aspect_ratio>1</aspect_ratio>
+          <overshoot>1</overshoot>
+          <decay_type>0</decay_type>
+          <decay_start>10</decay_start>
+          <use_near_attenuation>1</use_near_attenuation>
+          <use_far_attenuation>1</use_far_attenuation>
+          <near_attenuation_start>1</near_attenuation_start>
+          <near_attenuation_end>2</near_attenuation_end>
+          <far_attenuation_start>5</far_attenuation_start>
+          <far_attenuation_end>10</far_attenuation_end>
+        </technique>
+        <technique profile="FCOLLADA">
+          <constant_attenuation>1</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+          <falloff_angle>5</falloff_angle>
+          <falloff_exponent>1</falloff_exponent>
+          <intensity>0.9</intensity>
+          <outer_cone>5</outer_cone>
+        </technique>
+      </extra>
+    </light>
+    <light id="Infinite_Light_4" name="Infinite_Light_2">
+      <technique_common>
+        <directional>
+          <color>1 1 1</color>
+        </directional>
+      </technique_common>
+      <extra>
+        <technique profile="MAX3D">
+          <aspect_ratio>1</aspect_ratio>
+          <overshoot>1</overshoot>
+          <decay_type>0</decay_type>
+          <decay_start>10</decay_start>
+          <use_near_attenuation>1</use_near_attenuation>
+          <use_far_attenuation>1</use_far_attenuation>
+          <near_attenuation_start>1</near_attenuation_start>
+          <near_attenuation_end>2</near_attenuation_end>
+          <far_attenuation_start>5</far_attenuation_start>
+          <far_attenuation_end>10</far_attenuation_end>
+        </technique>
+        <technique profile="FCOLLADA">
+          <constant_attenuation>1</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+          <falloff_angle>5</falloff_angle>
+          <falloff_exponent>1</falloff_exponent>
+          <intensity>0.4</intensity>
+          <outer_cone>5</outer_cone>
+        </technique>
+      </extra>
+    </light>
+    <light id="global_ambient_light-object" name="global_ambient_light">
+      <technique_common>
+        <ambient>
+          <color>0.5 0.5 0.5</color>
+        </ambient>
+      </technique_common>
+      <extra>
+        <technique profile="FCOLLADA">
+          <intensity>1</intensity>
+        </technique>
+      </extra>
+    </light>
+  </library_lights>
+  <library_images>
+    <image id="Layer_1.psd" name="Layer_1.psd">
+      <init_from>./Layer%201.psd</init_from>
+      <extra>
+        <technique profile="MAYA">
+          <dgnode_type>kPSDFile</dgnode_type>
+        </technique>
+      </extra>
+    </image>
+    <image id="Top_Material_-_Default_Texture.psd" name="Top_Material_-_Default_Texture.psd">
+      <init_from>./Top_Material%20-%20Default%20Texture.psd</init_from>
+      <extra>
+        <technique profile="MAYA">
+          <dgnode_type>kPSDFile</dgnode_type>
+        </technique>
+      </extra>
+    </image>
+    <image id="Bottom_Material_-_Default_Texture.psd" name="Bottom_Material_-_Default_Texture.psd">
+      <init_from>./Bottom_Material%20-%20Default%20Texture.psd</init_from>
+      <extra>
+        <technique profile="MAYA">
+          <dgnode_type>kPSDFile</dgnode_type>
+        </technique>
+      </extra>
+    </image>
+    <image id="Front_Material_-_Default_Texture.psd" name="Front_Material_-_Default_Texture.psd">
+      <init_from>./Front_Material%20-%20Default%20Texture.psd</init_from>
+      <extra>
+        <technique profile="MAYA">
+          <dgnode_type>kPSDFile</dgnode_type>
+        </technique>
+      </extra>
+    </image>
+    <image id="Back_Material_-_Default_Texture.psd" name="Back_Material_-_Default_Texture.psd">
+      <init_from>./Back_Material%20-%20Default%20Texture.psd</init_from>
+      <extra>
+        <technique profile="MAYA">
+          <dgnode_type>kPSDFile</dgnode_type>
+        </technique>
+      </extra>
+    </image>
+    <image id="Left_Material_-_Default_Texture.psd" name="Left_Material_-_Default_Texture.psd">
+      <init_from>./Left_Material%20-%20Default%20Texture.psd</init_from>
+      <extra>
+        <technique profile="MAYA">
+          <dgnode_type>kPSDFile</dgnode_type>
+        </technique>
+      </extra>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="Right_Material" name="Right_Material">
+      <instance_effect url="#Right_Material-fx"/>
+    </material>
+    <material id="Top_Material" name="Top_Material">
+      <instance_effect url="#Top_Material-fx"/>
+    </material>
+    <material id="Bottom_Material" name="Bottom_Material">
+      <instance_effect url="#Bottom_Material-fx"/>
+    </material>
+    <material id="Front_Material" name="Front_Material">
+      <instance_effect url="#Front_Material-fx"/>
+    </material>
+    <material id="Back_Material" name="Back_Material">
+      <instance_effect url="#Back_Material-fx"/>
+    </material>
+    <material id="Left_Material" name="Left_Material">
+      <instance_effect url="#Left_Material-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="Right_Material-fx" name="Right_Material">
+      <profile_COMMON>
+        <newparam sid="Layer_1_psd-surface">
+          <surface type="2D">
+            <init_from>Layer_1.psd</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Layer_1_psd-sampler">
+          <sampler2D>
+            <source>Layer_1_psd-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NONE</minfilter>
+            <magfilter>NONE</magfilter>
+            <mipfilter>NONE</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Layer_1_psd-sampler" texcoord="UVSET0">
+                <extra>
+                  <technique profile="MAX3D">
+                    <amount>1</amount>
+                  </technique>
+                  <technique profile="MAYA">
+                    <repeatU>1</repeatU>
+                    <repeatV>1</repeatV>
+                    <rotateUV>0</rotateUV>
+                  </technique>
+                </extra>
+                <extra type="texture_offset">
+                  <technique profile="ADOBE">
+                    <offsets>
+                      <offsetu>0</offsetu>
+                      <offsetv>0</offsetv>
+                    </offsets>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>2</float>
+            </shininess>
+            <reflective>
+              <color>1 1 1 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA"/>
+          </extra>
+        </technique>
+        <extra type="material_overlay">
+          <technique profile="ADOBE">
+            <colors>
+              <diffuse_color>0.588235 0.980392 0.682353</diffuse_color>
+              <specular_color>0 0 0</specular_color>
+              <reflectivity_factor>0</reflectivity_factor>
+              <shininess>2</shininess>
+              <glossiness>1</glossiness>
+            </colors>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>1</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="Top_Material-fx" name="Top_Material">
+      <profile_COMMON>
+        <newparam sid="Top_Material_-_Default_Texture_psd-surface">
+          <surface type="2D">
+            <init_from>Top_Material_-_Default_Texture.psd</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Top_Material_-_Default_Texture_psd-sampler">
+          <sampler2D>
+            <source>Top_Material_-_Default_Texture_psd-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NONE</minfilter>
+            <magfilter>NONE</magfilter>
+            <mipfilter>NONE</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Top_Material_-_Default_Texture_psd-sampler" texcoord="UVSET0">
+                <extra>
+                  <technique profile="MAX3D">
+                    <amount>1</amount>
+                  </technique>
+                  <technique profile="MAYA">
+                    <repeatU>1</repeatU>
+                    <repeatV>1</repeatV>
+                    <rotateUV>0</rotateUV>
+                  </technique>
+                </extra>
+                <extra type="texture_offset">
+                  <technique profile="ADOBE">
+                    <offsets>
+                      <offsetu>0</offsetu>
+                      <offsetv>0</offsetv>
+                    </offsets>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>2</float>
+            </shininess>
+            <reflective>
+              <color>1 1 1 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA"/>
+          </extra>
+        </technique>
+        <extra type="material_overlay">
+          <technique profile="ADOBE">
+            <colors>
+              <diffuse_color>0.827451 0.827451 0.827451</diffuse_color>
+              <specular_color>0 0 0</specular_color>
+              <reflectivity_factor>0</reflectivity_factor>
+              <shininess>2</shininess>
+              <glossiness>1</glossiness>
+            </colors>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>1</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="Bottom_Material-fx" name="Bottom_Material">
+      <profile_COMMON>
+        <newparam sid="Bottom_Material_-_Default_Texture_psd-surface">
+          <surface type="2D">
+            <init_from>Bottom_Material_-_Default_Texture.psd</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Bottom_Material_-_Default_Texture_psd-sampler">
+          <sampler2D>
+            <source>Bottom_Material_-_Default_Texture_psd-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NONE</minfilter>
+            <magfilter>NONE</magfilter>
+            <mipfilter>NONE</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Bottom_Material_-_Default_Texture_psd-sampler" texcoord="UVSET0">
+                <extra>
+                  <technique profile="MAX3D">
+                    <amount>1</amount>
+                  </technique>
+                  <technique profile="MAYA">
+                    <repeatU>1</repeatU>
+                    <repeatV>1</repeatV>
+                    <rotateUV>0</rotateUV>
+                  </technique>
+                </extra>
+                <extra type="texture_offset">
+                  <technique profile="ADOBE">
+                    <offsets>
+                      <offsetu>0</offsetu>
+                      <offsetv>0</offsetv>
+                    </offsets>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>2</float>
+            </shininess>
+            <reflective>
+              <color>1 1 1 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA"/>
+          </extra>
+        </technique>
+        <extra type="material_overlay">
+          <technique profile="ADOBE">
+            <colors>
+              <diffuse_color>0.984314 0.65098 0.588235</diffuse_color>
+              <specular_color>0 0 0</specular_color>
+              <reflectivity_factor>0</reflectivity_factor>
+              <shininess>2</shininess>
+              <glossiness>1</glossiness>
+            </colors>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>1</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="Front_Material-fx" name="Front_Material">
+      <profile_COMMON>
+        <newparam sid="Front_Material_-_Default_Texture_psd-surface">
+          <surface type="2D">
+            <init_from>Front_Material_-_Default_Texture.psd</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Front_Material_-_Default_Texture_psd-sampler">
+          <sampler2D>
+            <source>Front_Material_-_Default_Texture_psd-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NONE</minfilter>
+            <magfilter>NONE</magfilter>
+            <mipfilter>NONE</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Front_Material_-_Default_Texture_psd-sampler" texcoord="UVSET0">
+                <extra>
+                  <technique profile="MAX3D">
+                    <amount>1</amount>
+                  </technique>
+                  <technique profile="MAYA">
+                    <repeatU>1</repeatU>
+                    <repeatV>1</repeatV>
+                    <rotateUV>0</rotateUV>
+                  </technique>
+                </extra>
+                <extra type="texture_offset">
+                  <technique profile="ADOBE">
+                    <offsets>
+                      <offsetu>0</offsetu>
+                      <offsetv>0</offsetv>
+                    </offsets>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>2</float>
+            </shininess>
+            <reflective>
+              <color>1 1 1 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA"/>
+          </extra>
+        </technique>
+        <extra type="material_overlay">
+          <technique profile="ADOBE">
+            <colors>
+              <diffuse_color>0.658824 0.588235 0.929412</diffuse_color>
+              <specular_color>0 0 0</specular_color>
+              <reflectivity_factor>0</reflectivity_factor>
+              <shininess>2</shininess>
+              <glossiness>1</glossiness>
+            </colors>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>1</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="Back_Material-fx" name="Back_Material">
+      <profile_COMMON>
+        <newparam sid="Back_Material_-_Default_Texture_psd-surface">
+          <surface type="2D">
+            <init_from>Back_Material_-_Default_Texture.psd</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Back_Material_-_Default_Texture_psd-sampler">
+          <sampler2D>
+            <source>Back_Material_-_Default_Texture_psd-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NONE</minfilter>
+            <magfilter>NONE</magfilter>
+            <mipfilter>NONE</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Back_Material_-_Default_Texture_psd-sampler" texcoord="UVSET0">
+                <extra>
+                  <technique profile="MAX3D">
+                    <amount>1</amount>
+                  </technique>
+                  <technique profile="MAYA">
+                    <repeatU>1</repeatU>
+                    <repeatV>1</repeatV>
+                    <rotateUV>0</rotateUV>
+                  </technique>
+                </extra>
+                <extra type="texture_offset">
+                  <technique profile="ADOBE">
+                    <offsets>
+                      <offsetu>0</offsetu>
+                      <offsetv>0</offsetv>
+                    </offsets>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>2</float>
+            </shininess>
+            <reflective>
+              <color>1 1 1 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA"/>
+          </extra>
+        </technique>
+        <extra type="material_overlay">
+          <technique profile="ADOBE">
+            <colors>
+              <diffuse_color>0.866667 0.588235 0.905882</diffuse_color>
+              <specular_color>0 0 0</specular_color>
+              <reflectivity_factor>0</reflectivity_factor>
+              <shininess>2</shininess>
+              <glossiness>1</glossiness>
+            </colors>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>1</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="Left_Material-fx" name="Left_Material">
+      <profile_COMMON>
+        <newparam sid="Left_Material_-_Default_Texture_psd-surface">
+          <surface type="2D">
+            <init_from>Left_Material_-_Default_Texture.psd</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Left_Material_-_Default_Texture_psd-sampler">
+          <sampler2D>
+            <source>Left_Material_-_Default_Texture_psd-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NONE</minfilter>
+            <magfilter>NONE</magfilter>
+            <mipfilter>NONE</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Left_Material_-_Default_Texture_psd-sampler" texcoord="UVSET0">
+                <extra>
+                  <technique profile="MAX3D">
+                    <amount>1</amount>
+                  </technique>
+                  <technique profile="MAYA">
+                    <repeatU>1</repeatU>
+                    <repeatV>1</repeatV>
+                    <rotateUV>0</rotateUV>
+                  </technique>
+                </extra>
+                <extra type="texture_offset">
+                  <technique profile="ADOBE">
+                    <offsets>
+                      <offsetu>0</offsetu>
+                      <offsetv>0</offsetv>
+                    </offsets>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>2</float>
+            </shininess>
+            <reflective>
+              <color>1 1 1 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA"/>
+          </extra>
+        </technique>
+        <extra type="material_overlay">
+          <technique profile="ADOBE">
+            <colors>
+              <diffuse_color>0.945098 0.94902 0.588235</diffuse_color>
+              <specular_color>0 0 0</specular_color>
+              <reflectivity_factor>0</reflectivity_factor>
+              <shininess>2</shininess>
+              <glossiness>1</glossiness>
+            </colors>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>1</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="Left1" name="Left">
+      <mesh>
+        <source id="Left1-positions">
+          <float_array id="Left1-positions-array" count="12">0.5 0 -0.5 0.5 0 0.5 0.5 -1 0.5 0.5 -1 -0.5</float_array>
+          <technique_common>
+            <accessor source="#Left1-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Left1-normals">
+          <float_array id="Left1-normals-array" count="12">1 0 0 1 0 0 1 0 0 1 0 0</float_array>
+          <technique_common>
+            <accessor source="#Left1-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Left1-texcoords">
+          <float_array id="Left1-texcoords-array" count="8">0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#Left1-texcoords-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Left1-vertices">
+          <input semantic="POSITION" source="#Left1-positions"/>
+          <input semantic="NORMAL" source="#Left1-normals"/>
+          <input semantic="TEXCOORD" source="#Left1-texcoords"/>
+        </vertices>
+        <triangles material="Left_Material" count="2">
+          <input semantic="VERTEX" source="#Left1-vertices" offset="0"/>
+          <p>0 1 2 2 3 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Right1" name="Right">
+      <mesh>
+        <source id="Right1-positions">
+          <float_array id="Right1-positions-array" count="12">-0.5 0 0.5 -0.5 0 -0.5 -0.5 -1 -0.5 -0.5 -1 0.5</float_array>
+          <technique_common>
+            <accessor source="#Right1-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Right1-normals">
+          <float_array id="Right1-normals-array" count="12">-1 0 0 -1 0 0 -1 0 0 -1 0 0</float_array>
+          <technique_common>
+            <accessor source="#Right1-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Right1-texcoords">
+          <float_array id="Right1-texcoords-array" count="8">0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#Right1-texcoords-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Right1-vertices">
+          <input semantic="POSITION" source="#Right1-positions"/>
+          <input semantic="NORMAL" source="#Right1-normals"/>
+          <input semantic="TEXCOORD" source="#Right1-texcoords"/>
+        </vertices>
+        <triangles material="Right_Material" count="2">
+          <input semantic="VERTEX" source="#Right1-vertices" offset="0"/>
+          <p>0 1 2 2 3 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Bottom1" name="Bottom">
+      <mesh>
+        <source id="Bottom1-positions">
+          <float_array id="Bottom1-positions-array" count="12">-0.5 0 -0.5 0.5 0 -0.5 0.5 -1 -0.5 -0.5 -1 -0.5</float_array>
+          <technique_common>
+            <accessor source="#Bottom1-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Bottom1-normals">
+          <float_array id="Bottom1-normals-array" count="12">0 0 -1 0 0 -1 0 0 -1 0 0 -1</float_array>
+          <technique_common>
+            <accessor source="#Bottom1-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Bottom1-texcoords">
+          <float_array id="Bottom1-texcoords-array" count="8">0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#Bottom1-texcoords-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Bottom1-vertices">
+          <input semantic="POSITION" source="#Bottom1-positions"/>
+          <input semantic="NORMAL" source="#Bottom1-normals"/>
+          <input semantic="TEXCOORD" source="#Bottom1-texcoords"/>
+        </vertices>
+        <triangles material="Bottom_Material" count="2">
+          <input semantic="VERTEX" source="#Bottom1-vertices" offset="0"/>
+          <p>0 1 2 2 3 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Top1" name="Top">
+      <mesh>
+        <source id="Top1-positions">
+          <float_array id="Top1-positions-array" count="12">0.5 0 0.5 -0.5 0 0.5 -0.5 -1 0.5 0.5 -1 0.5</float_array>
+          <technique_common>
+            <accessor source="#Top1-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Top1-normals">
+          <float_array id="Top1-normals-array" count="12">0 0 1 0 0 1 0 0 1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Top1-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Top1-texcoords">
+          <float_array id="Top1-texcoords-array" count="8">0.0005 0.000499 0.999501 0.000499 0.999501 0.999501 0.0005 0.999501</float_array>
+          <technique_common>
+            <accessor source="#Top1-texcoords-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Top1-vertices">
+          <input semantic="POSITION" source="#Top1-positions"/>
+          <input semantic="NORMAL" source="#Top1-normals"/>
+          <input semantic="TEXCOORD" source="#Top1-texcoords"/>
+        </vertices>
+        <triangles material="Top_Material" count="2">
+          <input semantic="VERTEX" source="#Top1-vertices" offset="0"/>
+          <p>0 1 2 2 3 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Front1" name="Front">
+      <mesh>
+        <source id="Front1-positions">
+          <float_array id="Front1-positions-array" count="12">-0.5 0 -0.5 -0.5 0 0.5 0.5 0 0.5 0.5 0 -0.5</float_array>
+          <technique_common>
+            <accessor source="#Front1-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Front1-normals">
+          <float_array id="Front1-normals-array" count="12">0 1 0 0 1 0 0 1 0 0 1 0</float_array>
+          <technique_common>
+            <accessor source="#Front1-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Front1-texcoords">
+          <float_array id="Front1-texcoords-array" count="8">1 0 1 1 0 1 0 0</float_array>
+          <technique_common>
+            <accessor source="#Front1-texcoords-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Front1-vertices">
+          <input semantic="POSITION" source="#Front1-positions"/>
+          <input semantic="NORMAL" source="#Front1-normals"/>
+          <input semantic="TEXCOORD" source="#Front1-texcoords"/>
+        </vertices>
+        <triangles material="Front_Material" count="2">
+          <input semantic="VERTEX" source="#Front1-vertices" offset="0"/>
+          <p>0 1 2 2 3 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Back1" name="Back">
+      <mesh>
+        <source id="Back1-positions">
+          <float_array id="Back1-positions-array" count="12">-0.5 -1 -0.5 0.5 -1 -0.5 0.5 -1 0.5 -0.5 -1 0.5</float_array>
+          <technique_common>
+            <accessor source="#Back1-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Back1-normals">
+          <float_array id="Back1-normals-array" count="12">0 -1 0 0 -1 0 0 -1 0 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#Back1-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Back1-texcoords">
+          <float_array id="Back1-texcoords-array" count="8">0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#Back1-texcoords-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Back1-vertices">
+          <input semantic="POSITION" source="#Back1-positions"/>
+          <input semantic="NORMAL" source="#Back1-normals"/>
+          <input semantic="TEXCOORD" source="#Back1-texcoords"/>
+        </vertices>
+        <triangles material="Back_Material" count="2">
+          <input semantic="VERTEX" source="#Back1-vertices" offset="0"/>
+          <p>0 1 2 2 3 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="DefaultScene">
+      <node id="Infinite_Light_1" name="Infinite_Light_1" type="NODE">
+        <lookat>-0.682952 -0.875595 0.851961 0 -0.5 0 0 1 0</lookat>
+        <instance_light url="#Infinite_Light_2"/>
+      </node>
+      <node id="Infinite_Light_3" name="Infinite_Light_2" type="NODE">
+        <lookat>0.27715 -0.499429 -1.12095 0 -0.5 0 0 1 0</lookat>
+        <instance_light url="#Infinite_Light_4"/>
+      </node>
+      <node id="global_ambient_light" name="global_ambient_light" type="NODE">
+        <instance_light url="#global_ambient_light-object"/>
+      </node>
+      <node id="Left" name="Left" type="NODE">
+        <matrix>1 0 0 0 0 0 1 -0.5 0 -1 0 -0.5 0 0 0 1</matrix>
+        <instance_geometry url="#Left1">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Left_Material" target="#Left_Material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Right" name="Right" type="NODE">
+        <matrix>1 0 0 0 0 0 1 -0.5 0 -1 0 -0.5 0 0 0 1</matrix>
+        <instance_geometry url="#Right1">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Right_Material" target="#Right_Material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Bottom" name="Bottom" type="NODE">
+        <matrix>1 0 0 0 0 0 1 -0.5 0 -1 0 -0.5 0 0 0 1</matrix>
+        <instance_geometry url="#Bottom1">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Bottom_Material" target="#Bottom_Material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Top" name="Top" type="NODE">
+        <matrix>1 0 0 0 0 0 1 -0.5 0 -1 0 -0.5 0 0 0 1</matrix>
+        <instance_geometry url="#Top1">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Top_Material" target="#Top_Material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Front" name="Front" type="NODE">
+        <matrix>1 0 0 0 0 0 1 -0.5 0 -1 0 -0.5 0 0 0 1</matrix>
+        <instance_geometry url="#Front1">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Front_Material" target="#Front_Material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Back" name="Back" type="NODE">
+        <matrix>1 0 0 0 0 0 1 -0.5 0 -1 0 -0.5 0 0 0 1</matrix>
+        <instance_geometry url="#Back1">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Back_Material" target="#Back_Material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <extra type="render_settings">
+        <technique profile="ADOBE">
+          <faces>
+            <render_faces>1</render_faces>
+            <face_style>4</face_style>
+            <face_color>1 1 1</face_color>
+            <texture_type>0</texture_type>
+            <anti_alias_quality>1</anti_alias_quality>
+            <show_reflections>1</show_reflections>
+            <show_refractions>1</show_refractions>
+            <show_shadows>1</show_shadows>
+            <video_at_highest_quality>0</video_at_highest_quality>
+            <remove_backfaces>0</remove_backfaces>
+          </faces>
+          <edges>
+            <render_edges>0</render_edges>
+            <line_style>1</line_style>
+            <line_color>0 0 0</line_color>
+            <line_width>1</line_width>
+            <crease_value>0</crease_value>
+            <remove_backface_lines>1</remove_backface_lines>
+            <remove_hidden_lines>1</remove_hidden_lines>
+          </edges>
+          <vertices>
+            <render_vertices>0</render_vertices>
+            <vertex_style>1</vertex_style>
+            <vertex_color>0 0 0</vertex_color>
+            <vertex_radius>1</vertex_radius>
+            <remove_backface_vertices>1</remove_backface_vertices>
+            <remove_hidden_vertices>1</remove_hidden_vertices>
+          </vertices>
+          <volumes>
+            <render_volume>0</render_volume>
+            <volume_style>2097152</volume_style>
+            <transfer_function0/>
+            <transfer_function1/>
+            <transfer_function2/>
+            <transfer_function3/>
+            <gradient_enhancement>1</gradient_enhancement>
+            <opacity_scale>1</opacity_scale>
+          </volumes>
+          <stereo>
+            <render_stereo>0</render_stereo>
+            <stereo_style>16384</stereo_style>
+            <stereo_offset>5</stereo_offset>
+            <stereo_line_spacing>40</stereo_line_spacing>
+          </stereo>
+          <internal>
+            <projection>0</projection>
+            <blend_unlit>0</blend_unlit>
+          </internal>
+        </technique>
+      </extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#DefaultScene"/>
+  </scene>
+</COLLADA>
