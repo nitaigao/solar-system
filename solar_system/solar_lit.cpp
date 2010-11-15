@@ -46,20 +46,47 @@ GLint load_texture(int width, int height, const std::string& filename)
 }
 
 
-#include "planet.hpp"
-
 typedef long long int64;
-static struct timeval start_time;
+static  struct timeval start_time;
 
-void init_time() {
-  gettimeofday(&start_time, NULL);
-}
+class ClockT
+{
+  
+public:
 
-int64 get_time() {
-  struct timeval t;
-  gettimeofday(&t, NULL);
-  return (int64) (t.tv_sec - start_time.tv_sec) * 1000000 + (t.tv_usec - start_time.tv_usec);
-}
+  ClockT() 
+    : last_time(0)
+    { }
+  
+  float delta()
+  {
+     int64 now = time();
+     float delta_time = (now - last_time) / 1000000.0;
+     last_time = now;
+     return delta_time;
+  } 
+ 
+  void init() 
+  {
+    gettimeofday(&start_time, NULL);
+  }
+
+private:
+
+  int64 time() 
+  {
+    struct timeval t;
+    gettimeofday(&t, NULL);
+    return (int64) (t.tv_sec - start_time.tv_sec) * 1000000 + (t.tv_usec - start_time.tv_usec);
+  }
+
+private:
+  
+  int64 last_time;  
+};
+
+int speed = 5;
+#include "planet.hpp"
 
 int zoom = 0;
 int rotation = 0;
@@ -131,12 +158,10 @@ void render_sun()
   glPopMatrix();
 }
 
+ClockT clockt;
+
 void render()
 {
-  int64 start_time = get_time();
-  float delta_time = (start_time - last_time) / 1000000.0;
-  last_time = start_time;
-  
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   glPushMatrix();
@@ -148,18 +173,20 @@ void render()
 
     render_stars();
 
-    glTranslatef(0, pedestal, -zoom);//-zoom, -zoom);
+    glTranslatef(0, pedestal, -zoom);
     glRotatef(rotation, 0.0, 1.0, 0.0);
     glRotatef(pitch, 1.0, 0.0, 0.0);
 
     render_sun();
    
     glPushMatrix(); // scene
+    
+      float delta = clockt.delta();
 
-        for(Planet::PlanetList::iterator p = planets.begin(); p != planets.end(); ++p)
-        {
-              (*p).render(delta_time);
-        }
+      for(Planet::PlanetList::iterator p = planets.begin(); p != planets.end(); ++p)
+      {
+        (*p).render(delta);
+      }
 
     glPopMatrix(); // end scene
 
@@ -227,7 +254,7 @@ void reshape(int w, int h)
   gluPerspective(60.0, (GLfloat) w/(GLfloat) h, 1.0, 10000000000.0);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-  gluLookAt (0.0, 0, -0.01, 
+  gluLookAt (45.0, 35, -50.01, 
              0.0, 0.0, 0.0, 
              0.0, 1.0, 0.0);       
   
@@ -292,8 +319,8 @@ int main(int argc, char** argv)
 {
   std::clog << "starting" << std::endl;
 
-  init_time();
-  
+  clockt.init();
+
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_MULTISAMPLE);
   glutInitWindowSize(1280, 800);

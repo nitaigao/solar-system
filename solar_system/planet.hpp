@@ -37,31 +37,34 @@ public:
 
   inline void render(float delta_time)
   {
+    add_time(delta_time);
+
     glPushMatrix(); // planet
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
-      add_time(delta_time);
-    
-      glRotatef(year_position() * 1, 0.0, 1.0, 0.0); // planet year rotation
-      glTranslatef(0.0, 0.0, distance_from_parent_); // planet distance from sun
+      glPushAttrib(GL_ALL_ATTRIB_BITS);
 
-      for(Planet::PlanetList::iterator p = children_.begin(); p != children_.end(); ++p)
-      {
-        (*p).render(delta_time);
-      }
+        glRotatef(year_position() * speed, 0.0, 1.0, 0.0); // planet year rotation
+        glTranslatef(0.0, 0.0, distance_from_parent_); // planet distance from sun
+        glRotatef(90, 1.0, 0.0, 0.0);
+        glRotatef(day_position() * 0.1, 0.0, 0.0, 1.0);
 
-      glEnable(GL_TEXTURE_2D);  
+        for(Planet::PlanetList::iterator p = children_.begin(); p != children_.end(); ++p)
+        {
+          (*p).render(delta_time);
+        }
 
-      GLUquadric *planet = gluNewQuadric();
+        glEnable(GL_TEXTURE_2D);  
 
-      gluQuadricTexture(planet, GL_TRUE); 
-      glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);    
-      glBindTexture(GL_TEXTURE_2D, textures_map[name_]);
+        GLUquadric *planet = gluNewQuadric();
 
-      gluSphere(planet, diameter_, 100, 100); 
+        gluQuadricTexture(planet, GL_TRUE); 
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);    
+        glBindTexture(GL_TEXTURE_2D, textures_map[name_]);
 
-      gluDeleteQuadric(planet); 
-      glDisable(GL_TEXTURE_2D);
-      
+        gluSphere(planet, diameter_, 100, 100); 
+
+        gluDeleteQuadric(planet); 
+        glDisable(GL_TEXTURE_2D);
+
       glPopAttrib();
     glPopMatrix(); // end planet
   };
