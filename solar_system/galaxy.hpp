@@ -26,7 +26,7 @@ public:
   {
     glPushMatrix(); // scene
 
-    render_sun();
+      render_sun();
          
       for(Planet::PlanetList::iterator p = planets.begin(); p != planets.end(); ++p)
       {
@@ -98,7 +98,7 @@ public:
     glEnable(GL_TEXTURE_2D);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
 
-    glTranslatef(0.0, 0.0, 10.0);
+    glTranslatef(0.0, 0.0, 1000.0);
 
     glBindTexture(GL_TEXTURE_2D, stars_texture);
     glVertexPointer(3, GL_FLOAT, 0, star_verts);
@@ -106,7 +106,7 @@ public:
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
     glRotatef(90, 1.0, 0.0, 0.0);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    //  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -115,7 +115,6 @@ public:
     glEnable(GL_LIGHTING);
 
     glPopMatrix();
-
   }
 
   void render_sun()

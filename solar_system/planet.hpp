@@ -47,7 +47,7 @@ public:
 
   inline void render()
   {
-    glPushMatrix(); // planet
+   glPushMatrix(); // planet
       glPushAttrib(GL_ALL_ATTRIB_BITS);
 
         glRotatef(year_position(), 0.0, 1.0, 0.0); // planet year rotation
@@ -74,7 +74,7 @@ public:
         glDisable(GL_TEXTURE_2D);
 
       glPopAttrib();
-    glPopMatrix(); // end planet
+   glPopMatrix(); // end planet
   };
 
 private:

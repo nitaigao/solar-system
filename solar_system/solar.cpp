@@ -11,24 +11,25 @@ Galaxy galaxy;
 #include "camera.hpp"
 Camera camera;
 
+int time_offset = 0;
+
 void render()
 {
+  galaxy.time(time_offset);
+  galaxy.update(clockt.delta());
+
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  glPushMatrix();
-  
-  glPushMatrix();
-    GLfloat sun_light_position0[] = { 0.0, 0.0, 0.0, 1.0 };
-    glLightfv(GL_LIGHT0, GL_POSITION, sun_light_position0);
-  glPopMatrix();
+  GLfloat sun_light_position0[] = { 0.0, 0.0, 0.0, 1.0 };
+  glLightfv(GL_LIGHT0, GL_POSITION, sun_light_position0);
 
   galaxy.render_stars();
 
-  camera.render();
+  glPushMatrix();
 
-  galaxy.update(clockt.delta());
+  camera.render();
   galaxy.render();
-   
+  
   glPopMatrix();
 
   glutSwapBuffers();
@@ -77,6 +78,16 @@ void keyboard(unsigned char key, int x, int y)
     camera.pitch(-1);
   }
 
+  if (key == 'z')
+  {
+    time_offset -= 10;
+  }
+
+  if (key == 'x')
+  {
+    time_offset += 10;
+  }
+
   if (key == 27)
   {
     exit(0);
@@ -88,10 +99,10 @@ void reshape(int w, int h)
   glViewport(0, 0, (GLsizei) w, (GLsizei) h);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(60.0, (GLfloat) w/(GLfloat) h, 1.0, 10000000000.0);
+  gluPerspective(60.0, (GLfloat) w/(GLfloat) h, 1.0, 1000000000000000000000.0);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-  gluLookAt (0, 50, -50.01, 
+  gluLookAt (0, 0, -10.01, 
              0.0, 0.0, 0.0, 
              0.0, 1.0, 0.0);         
 }
@@ -102,22 +113,22 @@ void init()
   glShadeModel(GL_SMOOTH);
 
   glEnable(GL_LIGHTING);
-  glEnable(GL_DEPTH_TEST);
   glEnable(GL_LIGHT0);
   
   glEnable(GL_BLEND);
   glEnable(GL_POLYGON_SMOOTH);  
   glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+  glEnable(GL_DEPTH_TEST);
+
   clockt.init();
   galaxy.init();
-  galaxy.time(1);
 }
 
 int main(int argc, char** argv)
 {
   glutInit(&argc, argv);
-  glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_MULTISAMPLE);
+  glutInitDisplayMode(GLUT_MULTISAMPLE | GLUT_DEPTH);
   glutInitWindowSize(1280, 800);
   glutInitWindowPosition(100, 100);
   glutCreateWindow("Import");
