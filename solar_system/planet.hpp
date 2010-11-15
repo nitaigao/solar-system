@@ -4,12 +4,13 @@ public:
 
   typedef std::deque<Planet> PlanetList;
 
-  Planet(unsigned int distance_from_parent, float year_length, float day_length, float diameter)
+  Planet(const std::string& name, unsigned int distance_from_parent, float year_length, float day_length, float diameter)
     : distance_from_parent_(distance_from_parent)
     , year_length_(year_length)
     , day_length_(day_length)
     , diameter_(diameter)
     , time_(0)
+    , name_(name)
   {
 
   }  
@@ -37,9 +38,10 @@ public:
   inline void render(float delta_time)
   {
     glPushMatrix(); // planet
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
       add_time(delta_time);
     
-      glRotatef(year_position() * 100, 0.0, 1.0, 0.0); // planet year rotation
+      glRotatef(year_position() * 1, 0.0, 1.0, 0.0); // planet year rotation
       glTranslatef(0.0, 0.0, distance_from_parent_); // planet distance from sun
 
       for(Planet::PlanetList::iterator p = children_.begin(); p != children_.end(); ++p)
@@ -47,7 +49,20 @@ public:
         (*p).render(delta_time);
       }
 
-      glutSolidSphere(diameter_, 160, 160);
+      glEnable(GL_TEXTURE_2D);  
+
+      GLUquadric *planet = gluNewQuadric();
+
+      gluQuadricTexture(planet, GL_TRUE); 
+      glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);    
+      glBindTexture(GL_TEXTURE_2D, textures_map[name_]);
+
+      gluSphere(planet, diameter_, 100, 100); 
+
+      gluDeleteQuadric(planet); 
+      glDisable(GL_TEXTURE_2D);
+      
+      glPopAttrib();
     glPopMatrix(); // end planet
   };
 
@@ -59,6 +74,7 @@ private:
   float diameter_;
   float time_;
   float day_time_;
+  std::string name_;
   Planet::PlanetList children_;
 
 };

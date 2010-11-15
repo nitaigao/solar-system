@@ -4,6 +4,7 @@
 #include <glu.h>
 #include <glut.h>
 
+
 #define MAXZ 8.0
 #define MINZ -8.0
 #define ZINC 0.4

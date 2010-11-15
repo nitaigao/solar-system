@@ -31,4 +31,4 @@ float loop_delta()
   return delta;
 }
 
-#endif /* end of include guard: CLOCK_HPP_DZSZC4DU */
+≈#endif /* end of include guard: CLOCK_HPP_DZSZC4DU */
