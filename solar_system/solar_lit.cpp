@@ -224,10 +224,10 @@ void reshape(int w, int h)
   glViewport(0, 0, (GLsizei) w, (GLsizei) h);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(60.0, (GLfloat) w/(GLfloat) h, 0.1, 10000000000000000.0);
+  gluPerspective(60.0, (GLfloat) w/(GLfloat) h, 1.0, 10000000000.0);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-  gluLookAt (0.0, 100, -0.001, 
+  gluLookAt (0.0, 0, -0.01, 
              0.0, 0.0, 0.0, 
              0.0, 1.0, 0.0);       
   
@@ -235,10 +235,17 @@ void reshape(int w, int h)
 
 void data()
 {  
-  textures_map["stars"] = load_texture(512, 512, "/Users/nk/Desktop/stars.raw");
-  textures_map["sun"] = load_texture(1024, 512, "/Users/nk/Desktop/sunmap.raw");
-  textures_map["mercury"] = load_texture(1024, 512, "/Users/nk/Desktop/mercurymap.raw");
-  textures_map["venus"] = load_texture(1024, 512, "/Users/nk/Desktop/venusmap.raw");
+  textures_map["stars"] = load_texture(512, 512, "textures/stars.raw");
+  textures_map["sun"] = load_texture(1024, 512, "textures/sunmap.raw");
+  textures_map["mercury"] = load_texture(1024, 512, "textures/mercurymap.raw");
+  textures_map["venus"] = load_texture(1024, 512, "textures/venusmap.raw");
+  textures_map["earth"] = load_texture(1024, 512, "textures/earthmap.raw");
+  textures_map["mars"] = load_texture(1024, 512, "textures/marsmap.raw");
+  textures_map["jupiter"] = load_texture(1024, 512, "textures/jupitermap.raw");
+  textures_map["saturn"] = load_texture(1024, 512, "textures/saturnmap.raw");
+  textures_map["uranus"] = load_texture(1024, 512, "textures/uranusmap.raw");
+  textures_map["neptune"] = load_texture(1024, 512, "textures/neptunemap.raw");
+  textures_map["pluto"] = load_texture(1024, 512, "textures/plutomap.raw");
 
   Planet mercury = Planet("mercury", 9, 87.96, 58.7, 0.8);
   planets.push_back(mercury);
@@ -246,27 +253,27 @@ void data()
   Planet venus = Planet("venus", 17, 224.68, 243, 1.9);
   planets.push_back(venus);
 
-  Planet earth = Planet("mercury", 23, 365.26, 1, 2);
+  Planet earth = Planet("earth", 23, 365.26, 1, 2);
   Planet moon = Planet("moon", 3, 100000000000000, 0, 0.12); // infinate moon orbit
   earth.add_child(moon);
   planets.push_back(earth);
 
-  Planet mars = Planet("mercury", 35, 686.98, 1.026, 1);
+  Planet mars = Planet("mars", 35, 686.98, 1.026, 1);
   planets.push_back(mars);
 
-  Planet jupiter = Planet("mercury", 120,  11.862 * 365, 9.84 / 24.0, 21.6 * 0.2);
+  Planet jupiter = Planet("jupiter", 120,  11.862 * 365, 9.84 / 24.0, 21.6 * 0.2);
   planets.push_back(jupiter);
 
-  Planet saturn = Planet("mercury", 221, 29.456 * 365, 10.2 / 24.0, 18 * 0.2); 
+  Planet saturn = Planet("saturn", 221, 29.456 * 365, 10.2 / 24.0, 18 * 0.2); 
   planets.push_back(saturn);
 
-  Planet uranus = Planet("mercury", 444, 84.07 * 365, 17.9 / 24.0, 7.3);
+  Planet uranus = Planet("uranus", 444, 84.07 * 365, 17.9 / 24.0, 7.3);
   planets.push_back(uranus);
 
-  Planet neptune = Planet("mercury", 696, 164.81 * 365, 19.1 / 24.0, 7);
+  Planet neptune = Planet("neptune", 696, 164.81 * 365, 19.1 / 24.0, 7);
   planets.push_back(neptune);
 
-  Planet pluto = Planet("mercury", 914, 247.7 * 365, 6.39 / 24.0, 0.5);
+  Planet pluto = Planet("pluto", 914, 247.7 * 365, 6.39 / 24.0, 0.5);
   planets.push_back(pluto);
 }
 
