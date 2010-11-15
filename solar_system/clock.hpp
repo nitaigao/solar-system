@@ -1,3 +1,5 @@
+#include <sys/time.h>
+
 typedef long long int64;
 static  struct timeval start_time;
 

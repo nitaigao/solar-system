@@ -1,4 +1,5 @@
 #include <sstream>
+#include <deque>
 
 class Planet
 {  
@@ -21,7 +22,6 @@ public:
   {
     std::stringstream texture_name;
     texture_name << "textures/" << name_ << "map.raw";
-    std::clog << texture_name.str() << std::endl;
     texture_ = RawTexture::from_file(1024, 512, texture_name.str().c_str());
   }
 
@@ -50,7 +50,7 @@ public:
     glPushMatrix(); // planet
       glPushAttrib(GL_ALL_ATTRIB_BITS);
 
-        glRotatef(year_position() * speed, 0.0, 1.0, 0.0); // planet year rotation
+        glRotatef(year_position(), 0.0, 1.0, 0.0); // planet year rotation
         glTranslatef(0.0, 0.0, distance_from_parent_); // planet distance from sun
         glRotatef(90, 1.0, 0.0, 0.0);
         glRotatef(day_position() * 0.1, 0.0, 0.0, 1.0);
