@@ -1,3 +1,5 @@
+#include <sstream>
+
 class Planet
 {  
 public:
@@ -14,6 +16,14 @@ public:
   {
 
   }  
+
+  void init()
+  {
+    std::stringstream texture_name;
+    texture_name << "textures/" << name_ << "map.raw";
+    std::clog << texture_name.str() << std::endl;
+    texture_ = RawTexture::from_file(1024, 512, texture_name.str().c_str());
+  }
 
   inline void add_child(const Planet& moon) { children_.push_back(moon); };
 
@@ -35,10 +45,8 @@ public:
   inline float year_position() { return (((time_ / year_length_) * 100) * 360) / 100.0; };
   inline float day_position() { return  (((time_ / day_length_ ) * 100) * 360) / 100.0; };
 
-  inline void render(float delta_time)
+  inline void render()
   {
-    add_time(delta_time);
-
     glPushMatrix(); // planet
       glPushAttrib(GL_ALL_ATTRIB_BITS);
 
@@ -49,7 +57,7 @@ public:
 
         for(Planet::PlanetList::iterator p = children_.begin(); p != children_.end(); ++p)
         {
-          (*p).render(delta_time);
+          (*p).render();
         }
 
         glEnable(GL_TEXTURE_2D);  
@@ -58,7 +66,7 @@ public:
 
         gluQuadricTexture(planet, GL_TRUE); 
         glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);    
-        glBindTexture(GL_TEXTURE_2D, textures_map[name_]);
+        glBindTexture(GL_TEXTURE_2D, texture_);
 
         gluSphere(planet, diameter_, 100, 100); 
 
@@ -79,6 +87,7 @@ private:
   float day_time_;
   std::string name_;
   Planet::PlanetList children_;
+  GLuint texture_;
 
 };
 

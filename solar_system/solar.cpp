@@ -2,113 +2,114 @@
 #include <glu.h>
 #include <glut.h>
 
-#include <iostream>
-
 #include <string>
 #include <deque>
+#include <map>
+#include <sys/time.h>
 
-int planet_scale = 1;
-int distance_scale = 1;
+#include "raw_texture.hpp"
 
-class Planet
-{  
-public:
+int speed = 5;
+#include "planet.hpp"
 
-  typedef std::deque<Planet> PlanetList;
+int zoom = 0;
+int rotation = 0;
+int pedestal = 0;
+int pitch = 0;
 
-  Planet(unsigned int distance_from_parent, float year_length, float day_length, float diameter)
-    : distance_from_parent_(distance_from_parent)
-    , year_length_(year_length)
-    , day_length_(day_length)
-    , diameter_(diameter)
-    , time_(0)
-  {
-
-  }  
-
-  inline void add_child(const Planet& moon) { children_.push_back(moon); };
-
-  inline void add_time(float time) 
-  { 
-    
-    time_ += time; 
-    if (time_ >= year_length_)
-    {
-      time_ = 0;
-    }
-
-    for(Planet::PlanetList::iterator m = children_.begin(); m != children_.end(); ++m)
-    {
-      (*m).add_time(time);
-    }
-  };
-
-  inline float year_position() { return (((time_ / year_length_) * 100) * 360) / 100.0; };
-  inline float day_position() { return  (((time_ / day_length_ ) * 100) * 360) / 100.0; };
-
-  inline void render(float time)
-  {
-    add_time(time);
-
-    glPushMatrix(); // planet
-    glRotatef(year_position(), 0.0, 1.0, 0.0); // planet year rotation
-    glTranslatef(distance_from_parent_ * distance_scale, 0.0, 0.0); // planet distance from sun
-
-    for(PlanetList::iterator m = children_.begin(); m != children_.end(); ++m)
-    {
-       (*m).render(time);
-    }
-
-    glRotatef(day_position() * 0.01, 0.0, 1.0, 0.0); // planet day rotation
-    glutWireSphere(diameter_ * planet_scale, 16, 16);
-
-    glPopMatrix(); // end planet
-  };
-
-private:
-
-  unsigned int distance_from_parent_;
-  float year_length_;
-  float day_length_;
-  float diameter_;
-  float time_;
-  float day_time_;
-  Planet::PlanetList children_;
-
-};
-
-Planet::PlanetList planets;
-
-void render()
+void render_stars()
 {
-  glClear(GL_COLOR_BUFFER_BIT);
+  GLfloat star_verts[] = {  2000.0,  2000.0, 0.0,
+                            2000.0, -2000.0, 0.0,
+                           -2000.0,  2000.0, 0.0,
+                            -2000.0, -2000.0, 0.0 };
 
-  glPushMatrix(); // scene
-  
-  static float time = 1;
-  static float earth_time = 0.0;;
-  earth_time += time;
+  GLfloat texture_coords[] = { 0.0, 0.0,
+                               1000.0, 0.0,
+                               1000.0, 1000.0,
+                               0.0, 1000.0 };
 
-  if (earth_time > 365)
-  {
-    earth_time = 0;
-    std::clog << "year" << std::endl;
-  }
-  
-  glPushMatrix(); // sun
-  glutWireSphere(215 * 0.03/*planet_scale*/, 16, 16);
-  glPopMatrix(); // end sun
+  glPushMatrix(); 
+     
+    glDisable(GL_LIGHTING);
+   
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glEnableClientState(GL_VERTEX_ARRAY);
 
-  glPushMatrix();
+    glEnable(GL_TEXTURE_2D);
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
 
-  for(Planet::PlanetList::iterator p = planets.begin(); p != planets.end(); ++p)
-  {
-    (*p).render(time);
-  }
+    glTranslatef(0.0, 0.0, 10.0);
+   
+    glBindTexture(GL_TEXTURE_2D, textures_map["stars"]);
+    glVertexPointer(3, GL_FLOAT, 0, star_verts);
+    glTexCoordPointer(2, GL_FLOAT, 0, texture_coords);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+    glRotatef(90, 1.0, 0.0, 0.0);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+    glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    glDisable(GL_TEXTURE_2D); 
+
+    glEnable(GL_LIGHTING);
 
   glPopMatrix();
 
-  glPopMatrix(); // end scene
+}
+
+void render_sun()
+{
+  glPushMatrix();
+  glPushAttrib(GL_ALL_ATTRIB_BITS);
+
+  glEnable(GL_TEXTURE_2D);  
+
+  GLUquadric *sun = gluNewQuadric();
+
+  gluQuadricTexture(sun, GL_TRUE); 
+  glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);    
+  glBindTexture(GL_TEXTURE_2D, textures_map["sun"]);
+
+  gluSphere(sun, 1, 100, 100); 
+
+  gluDeleteQuadric(sun); 
+  glDisable(GL_TEXTURE_2D);
+
+  glPopAttrib();
+  glPopMatrix();
+}
+
+#include "clock.hpp"
+ClockT clockt;
+
+#include "galaxy.hpp"
+Galaxy galaxy;
+
+void render()
+{
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  glPushMatrix();
+
+    glPushMatrix();
+      GLfloat sun_light_position0[] = { 0.0, 0.0, 0.0, 1.0 };
+      glLightfv(GL_LIGHT0, GL_POSITION, sun_light_position0);
+    glPopMatrix();
+
+    render_stars();
+
+    glTranslatef(0, pedestal, -zoom);
+    glRotatef(rotation, 0.0, 1.0, 0.0);
+    glRotatef(pitch, 1.0, 0.0, 0.0);
+
+    render_sun();
+
+    galaxy.update(clockt.delta());
+    galaxy.render();
+   
+  glPopMatrix();
 
   glutSwapBuffers();
   glutPostRedisplay();
@@ -116,10 +117,51 @@ void render()
 
 void keyboard(unsigned char key, int x, int y)
 {
-  if (key == 'a') 
+  if (key == 'w')
+  {
+    zoom += 1;
+  }
+
+  if (key == 's')
+  {
+    zoom -= 1;
+  }
+
+  if (key == 'a')
+  {
+    rotation += 1;
+  }
+
+  if (key == 'd')
+  {
+    rotation -= 1;
+  }
+
+  if (key == 'e')
+  {
+    pedestal += 1;
+  }
+
+  if (key == 'q')
+  {
+    pedestal -= 1;
+  }
+
+  if (key == 'r')
+  {
+    pitch += 1;
+  }
+
+  if (key == 'f')
+  {
+    pitch -= 1;
+  }
+
+  if (key == 27)
   {
     exit(0);
   }
+
 }
 
 void reshape(int w, int h)
@@ -127,60 +169,51 @@ void reshape(int w, int h)
   glViewport(0, 0, (GLsizei) w, (GLsizei) h);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(60.0, (GLfloat) w/(GLfloat) h, 0.1, 10000000000000000.0);
+  gluPerspective(60.0, (GLfloat) w/(GLfloat) h, 1.0, 10000000000.0);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-  gluLookAt (0.0, 1000, 20, 
+  gluLookAt (0, 50, -50.01, 
              0.0, 0.0, 0.0, 
-             0.0, 1.0, 0.0);        
+             0.0, 1.0, 0.0);         
 }
 
 void data()
 {  
-  Planet mercury = Planet(9, 87.96, 58.7, 0.8);
-  planets.push_back(mercury);
+  textures_map["stars"] = RawTexture::from_file(512, 512, "textures/stars.raw");
+  textures_map["sun"] = RawTexture::from_file(1024, 512, "textures/sunmap.raw");
+ 
+  galaxy.init();
+}
 
-  Planet venus = Planet(17, 224.68, 243, 1.9);
-  planets.push_back(venus);
+void init()
+{
+  glClearColor(0.00, 0.0, 0.0, 0.0);
+  glShadeModel(GL_SMOOTH);
 
-  Planet earth = Planet(23, 365.26, 1, 2);
-  Planet moon = Planet(3, 365, 1, 0.12);
-  earth.add_child(moon);
-  planets.push_back(earth);
-
-  Planet mars = Planet(35, 686.98, 1.026, 1);
-  planets.push_back(mars);
-
-  Planet jupiter = Planet(120,  11.862 * 365, 9.84 / 24.0, 21.6 * 0.2);
-  planets.push_back(jupiter);
-
-  Planet saturn = Planet(221, 29.456 * 365, 10.2 / 24.0, 18 * 0.2); 
-  planets.push_back(saturn);
-
-  Planet uranus = Planet(444, 84.07 * 365, 17.9 / 24.0, 7.3);
-  planets.push_back(uranus);
-
-  Planet neptune = Planet(696, 164.81 * 365, 19.1 / 24.0, 7);
-  planets.push_back(neptune);
-
-  Planet pluto = Planet(914, 247.7 * 365, 6.39 / 24.0, 0.5);
-  planets.push_back(pluto);
+  glEnable(GL_LIGHTING);
+  glEnable(GL_DEPTH_TEST);
+  glEnable(GL_LIGHT0);
+  
+  glEnable(GL_BLEND);
+  glEnable(GL_POLYGON_SMOOTH);  
+  glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 int main(int argc, char** argv)
 {
   std::clog << "starting" << std::endl;
 
+  clockt.init();
+
   glutInit(&argc, argv);
-  glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+  glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_MULTISAMPLE);
   glutInitWindowSize(1280, 800);
   glutInitWindowPosition(100, 100);
   glutCreateWindow("Import");
 
   std::clog << "init" << std::endl;
 
-  glClearColor(0.00, 0.0, 0.0, 0.0);
-
+  init();
   data();
  
   std::clog << "running" << std::endl;
@@ -192,4 +225,6 @@ int main(int argc, char** argv)
   glutMainLoop();
 
   std::clog << "closing" << std::endl;
+
+  return 0;
 }
